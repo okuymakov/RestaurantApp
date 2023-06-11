@@ -21,6 +21,7 @@ include(
     ":feature:home",
     ":feature:cart",
     ":feature:category",
+    ":feature:product",
     ":core:data",
     ":core:domain",
     ":core:ui"
