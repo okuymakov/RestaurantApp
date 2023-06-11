@@ -19,6 +19,7 @@ rootProject.name = "RestaurantApp"
 include(
     ":app",
     ":feature:home",
+    ":feature:cart",
     ":core:data",
     ":core:domain",
     ":core:ui"
