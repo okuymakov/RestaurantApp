@@ -18,5 +18,6 @@ dependencyResolutionManagement {
 rootProject.name = "RestaurantApp"
 include(
     ":app",
+    ":core:data",
     ":core:domain"
 )
