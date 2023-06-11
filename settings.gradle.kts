@@ -19,5 +19,6 @@ rootProject.name = "RestaurantApp"
 include(
     ":app",
     ":core:data",
-    ":core:domain"
+    ":core:domain",
+    ":core:ui"
 )
