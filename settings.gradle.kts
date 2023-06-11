@@ -20,6 +20,7 @@ include(
     ":app",
     ":feature:home",
     ":feature:cart",
+    ":feature:category",
     ":core:data",
     ":core:domain",
     ":core:ui"
