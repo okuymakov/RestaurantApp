@@ -1,4 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -13,5 +16,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "RestaurantApp"
-include ':app'
-
+include(
+    ":app",
+    ":core:domain"
+)
