@@ -5,13 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.CategoryFragment">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dishes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/item_dish"
-        />
 
+    <com.example.core.ui.views.RecyclerStateLayout
+        android:id="@+id/list_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dishes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/item_dish" />
+    </com.example.core.ui.views.RecyclerStateLayout>
 </FrameLayout>

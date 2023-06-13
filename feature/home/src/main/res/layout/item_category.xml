@@ -20,11 +20,9 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:maxWidth="200dp"
-        android:fontFamily="@font/sf_pro_display_medium"
+        android:textAppearance="@style/TextAppearance.RestaurantApp.Headline1"
         android:layout_marginVertical="@dimen/small_150"
         android:layout_marginHorizontal="@dimen/normal_100"
-        android:textColor="@color/black"
         tools:text="Пекарни и кондитерские" />
 </FrameLayout>

@@ -14,4 +14,3 @@ interface DataComponent : RepoProvider {
         }
     }
 }
-

@@ -1,4 +1,4 @@
-package com.example.category.ui
+package com.example.category.ui.adapter
 
 import com.example.category.databinding.ItemDishBinding
 import com.example.domain.model.Dish
@@ -21,7 +21,7 @@ fun adapterDelegate(itemClickedListener: (Dish) -> Unit) =
             itemClickedListener(item)
         }
         bind {
-            binding.text.text = item.name
-            binding.productPreview.setImageUri(item.imageUrl)
+            binding.dishName.text = item.name
+            binding.dishPreview.setImageUri(item.imageUrl)
         }
     }

@@ -76,7 +76,7 @@ class RecyclerStateLayout @JvmOverloads constructor(
     }
 
     private fun render() {
-        binding.loadingSpinner.visibility =
+        binding.loadingView.visibility =
             if (state == State.Loading && progressBarEnabled) View.VISIBLE else View.GONE
         binding.errorView.visibility = if (state == State.Error) View.VISIBLE else View.GONE
         binding.emptyView.visibility = if (state == State.Empty) View.VISIBLE else View.GONE

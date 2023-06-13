@@ -55,8 +55,7 @@
     <FrameLayout
         android:id="@+id/loading_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone">
+        android:layout_height="match_parent">
 
         <ProgressBar
             android:id="@+id/loading_spinner"

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Category
+import com.example.domain.network.Response
 import com.example.domain.repository.CategoryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,10 +15,14 @@ import javax.inject.Provider
 class HomeViewModel(
     private val repo: CategoryRepository
 ) : ViewModel() {
-    private val _state = MutableStateFlow<List<Category>>(emptyList())
+    private val _state = MutableStateFlow<Response<List<Category>>>(Response.Success(emptyList()))
     val state get() = _state.asStateFlow()
 
     init {
+        fetchData()
+    }
+
+    fun fetchData() {
         viewModelScope.launch {
             val res = repo.fetchCategories()
             _state.emit(res)
