@@ -2,6 +2,11 @@
 <resources>
     <declare-styleable name="ProductPreviewLayout">
         <attr name="product_image" format="reference" />
-        <attr name="image_size" format="dimension" />
+        <attr name="product_padding" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RecyclerStateLayout">
+        <attr name="errorText" format="string" />
+        <attr name="emptyText" format="string" />
+        <attr name="progressBarEnabled" format="boolean" />
     </declare-styleable>
 </resources>
