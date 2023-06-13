@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/normal_100"
+    android:layout_marginTop="@dimen/normal_100">
+
+    <com.example.core.ui.views.ProductPreview
+        android:id="@+id/dish_preview"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        tools:product_image="@sample/dishes"
+        app:product_padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/dish_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.RestaurantApp.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/dish_price_and_weight"
+        app:layout_constraintStart_toEndOf="@id/dish_preview"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/normal_100"
+        android:layout_marginBottom="4dp"
+        android:maxWidth="120dp"
+        android:layout_marginStart="@dimen/small_100"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="Зеленый салат" />
+
+    <TextView
+        android:id="@+id/dish_price_and_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.RestaurantApp.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dish_name"
+        app:layout_constraintTop_toBottomOf="@+id/dish_name"
+        app:layout_constraintVertical_bias="0.5"
+        android:paddingBottom="@dimen/normal_100"
+        tools:text="390 Р" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_counter"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/minus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:paddingEnd="@dimen/normal_100"
+            android:paddingVertical="4dp"
+            android:paddingStart="6dp"
+            android:src="@drawable/ic_minus_24" />
+
+        <TextView
+            android:id="@+id/dish_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1"
+            android:textAppearance="@style/TextAppearance.RestaurantApp.Body1" />
+
+        <ImageButton
+            android:id="@+id/plus_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/normal_100"
+            android:paddingEnd="6dp"
+            android:paddingVertical="4dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_plus_24" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

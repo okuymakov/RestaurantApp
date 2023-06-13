@@ -1,3 +1,6 @@
 <resources>
-    <string name="cart_fragment">Cart fragment</string>
+    <string name="price">%1$d ₽</string>
+    <string name="weight">%1$dг</string>
+    <string name="btn_pay">Оплатить %1$d ₽</string>
+    <string name="msg_empty_cart">Корзина пуста!</string>
 </resources>
