@@ -9,6 +9,8 @@ dependencies {
     implementation(libs.android.appcompat)
     implementation(libs.material)
 
+    implementation(libs.ktx.fragment)
+    
     //coil
     implementation(libs.coil)
 
