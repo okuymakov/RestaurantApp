@@ -9,20 +9,8 @@
         app:graph="@navigation/home_nav_graph" />
 
     <fragment
-        android:id="@+id/cart"
-        android:name="com.example.cart.CartFragment"
-        android:label="@string/menu_cart"
-        tools:layout="@layout/fragment_cart" />
-
-    <fragment
-        android:id="@+id/search"
-        android:name="com.example.cart.CartFragment"
-        android:label="@string/menu_cart"
-        tools:layout="@layout/fragment_cart" />
-
-    <fragment
-        android:id="@+id/account"
-        android:name="com.example.cart.CartFragment"
+        android:id="@+id/cart_fragment"
+        android:name="com.example.cart.ui.CartFragment"
         android:label="@string/menu_cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

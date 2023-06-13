@@ -8,6 +8,7 @@ android.namespace = "com.example.restaurantapp"
 dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:category"))
+    implementation(project(":feature:product"))
     implementation(project(":feature:cart"))
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
@@ -18,6 +19,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.constraintlayout)
 
+    //coil
+    implementation(libs.coil)
+
     //navigation
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
@@ -25,6 +29,9 @@ dependencies {
     //dagger
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
+
+    //google services
+    implementation(libs.gms.location)
 
     //tests
     testImplementation(libs.junit)

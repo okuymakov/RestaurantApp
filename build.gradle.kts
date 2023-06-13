@@ -5,5 +5,4 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.navigation.safeargs) apply false
-    id("org.jetbrains.kotlin.jvm") version "1.8.0" apply false
 }

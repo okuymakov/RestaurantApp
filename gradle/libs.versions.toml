@@ -2,6 +2,7 @@
 android-gradle = "7.4.1"
 kotlin = "1.8.22"
 kotlin-serialization = "1.5.0"
+kotlin-coroutines = "1.7.0"
 android-appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
@@ -16,6 +17,7 @@ adapterdelegates = "4.3.2"
 junit = "4.13.2"
 android-junit = "1.1.5"
 espresso = "3.5.1"
+gms-location = "21.0.1"
 
 [libraries]
 # Gradle
@@ -23,6 +25,7 @@ android-gradle = { module = "com.android.tools.build:gradle", version.ref = "and
 # Kotlin
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 # Appcompat
 android-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "android-appcompat" }
 # UI
@@ -49,6 +52,8 @@ coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 # Adapter
 adapterdelegates = { module = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl", version.ref = "adapterdelegates" }
 adapterdelegates-viewbinding = { module = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates" }
+# Google services
+gms-location = { module = "com.google.android.gms:play-services-location", version.ref = "gms-location" }
 # Testing
 junit = { module = "junit:junit", version.ref = "junit" }
 android-junit = { module = "androidx.test.ext:junit", version.ref = "android-junit" }
