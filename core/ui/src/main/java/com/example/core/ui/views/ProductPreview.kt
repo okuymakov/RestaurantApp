@@ -5,10 +5,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import coil.load
 import com.example.core.ui.R
 import com.example.core.ui.databinding.LayoutProductPreviewBinding
+import com.example.core.ui.extensions.drawable
 
 class ProductPreview @JvmOverloads constructor(
     context: Context,
@@ -35,9 +35,7 @@ class ProductPreview @JvmOverloads constructor(
         val inflater = LayoutInflater.from(context)
         inflater.inflate(R.layout.layout_product_preview, this, true)
         binding = LayoutProductPreviewBinding.bind(this)
-        background = ContextCompat.getDrawable(context, R.drawable.bg_corner_10)
-        val padding = resources.getDimension(R.dimen.small_175).toInt()
-        setPadding(padding, padding, padding, padding)
+        background = context.drawable(R.drawable.bg_corner_10)
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.ProductPreviewLayout,
@@ -46,6 +44,12 @@ class ProductPreview @JvmOverloads constructor(
         ).apply {
             try {
                 productImage = getResourceId(R.styleable.ProductPreviewLayout_product_image, 0)
+                val padding = getDimension(
+                    R.styleable.ProductPreviewLayout_product_padding,
+                    resources.getDimension(R.dimen.small_175)
+                ).toInt()
+                setPadding(padding, padding, padding, padding)
+
             } finally {
                 recycle()
             }
