@@ -10,11 +10,12 @@ import com.example.category.databinding.FragmentCategoryBinding
 import com.example.category.di.CategoryComponent
 import com.example.category.navigation.CategoryNavigator
 import com.example.category.ui.adapter.DishAdapter
+import com.example.category.ui.adapter.TagAdapter
 import com.example.core.ui.extensions.launchOnStarted
+import com.example.core.ui.recyclerview.itemdecorations.GridOffsetDecoration
 import com.example.core.ui.viewbinding.viewBinding
 import com.example.core.ui.views.RecyclerStateLayout
 import com.example.domain.model.Dish
-import com.example.domain.network.Response
 import javax.inject.Inject
 
 class CategoryFragment : Fragment(R.layout.fragment_category) {
@@ -24,12 +25,18 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
     @Inject
     internal lateinit var navigator: CategoryNavigator
     private val viewModel: CategoryViewModel by viewModels { viewModelFactory }
-    private val adapter: DishAdapter by lazy { DishAdapter(::onClick) }
+    private val dishAdapter: DishAdapter by lazy { DishAdapter(::onClick) }
+    private val tagAdapter: TagAdapter by lazy { TagAdapter(::onTagClick) }
     private val binding by viewBinding(FragmentCategoryBinding::bind)
 
     private fun onClick(dish: Dish) {
         navigator.navigateToProduct(dish)
     }
+
+    private fun onTagClick(tag: SelectableTag) {
+        viewModel.selectTag(tag)
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,37 +45,51 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.listState.updateState(RecyclerStateLayout.State.Loading)
+        viewModel.fetchDishes()
         binding.listState.setOnRetryClickListener {
-            binding.listState.updateState(RecyclerStateLayout.State.Loading)
-            viewModel.fetchData()
+            viewModel.fetchDishes()
         }
-        binding.dishes.apply {
-            adapter = this@CategoryFragment.adapter
+        binding.tags.apply {
+            adapter = this@CategoryFragment.tagAdapter
             setHasFixedSize(true)
         }
+        binding.dishes.apply {
+            adapter = this@CategoryFragment.dishAdapter
+            addItemDecoration(
+                GridOffsetDecoration(
+                    resources.getDimension(com.example.core.ui.R.dimen.small_100).toInt(),
+                    resources.getDimension(com.example.core.ui.R.dimen.small_175).toInt()
+                )
+            )
+        }
         launchOnStarted {
-            viewModel.state.collect { res ->
-                when (res) {
-                    is Response.Failure.ApiError -> {
+            viewModel.state.collect { state ->
+                tagAdapter.items = state.tags
+                when {
+                    state.isLoading -> {
+                        binding.listState.updateState(RecyclerStateLayout.State.Loading)
+                    }
+                    state.hasApiError -> {
                         binding.listState.updateState(RecyclerStateLayout.State.Error)
                         binding.listState.errorText =
                             resources.getString(com.example.core.ui.R.string.api_error)
                     }
-                    is Response.Failure.NoInternetError -> {
+                    state.hasNoInternet -> {
                         binding.listState.updateState(RecyclerStateLayout.State.Error)
                         binding.listState.errorText =
                             resources.getString(com.example.core.ui.R.string.no_internet_error)
                     }
-                    is Response.Failure.UnknownError -> {
+                    state.hasUnknownError -> {
                         binding.listState.updateState(RecyclerStateLayout.State.Error)
                         binding.listState.errorText =
                             resources.getString(com.example.core.ui.R.string.unknown_error)
                     }
-                    is Response.Success -> {
-                        if (res.data.isNotEmpty()) {
+                    else -> {
+                        if (state.dishes.isNotEmpty()) {
                             binding.listState.updateState(RecyclerStateLayout.State.Success)
-                            adapter.updateData(res.data)
+                            dishAdapter.updateData(state.dishes)
+                        } else {
+                            binding.listState.updateState(RecyclerStateLayout.State.Empty)
                         }
                     }
                 }

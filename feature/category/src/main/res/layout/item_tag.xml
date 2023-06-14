@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/small_100"
+    android:background="@drawable/bg_corner_10"
+    android:paddingHorizontal="@dimen/normal_100"
+    android:paddingVertical="@dimen/small_100">
+
+    <TextView
+        android:id="@+id/tag_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.RestaurantApp.Body1"
+        tools:text="Все меню" />
+</FrameLayout>

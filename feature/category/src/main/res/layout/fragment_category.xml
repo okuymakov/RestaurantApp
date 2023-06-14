@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CategoryFragment">
-
+    android:orientation="vertical"
+    tools:context=".ui.CategoryFragment"
+    android:paddingHorizontal="@dimen/normal_100">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/small_100"
+        android:paddingBottom="@dimen/normal_100"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_tag" />
     <com.example.core.ui.views.RecyclerStateLayout
         android:id="@+id/list_state"
+        app:emptyText="@string/msg_empty_dishes"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -19,4 +30,4 @@
             app:spanCount="3"
             tools:listitem="@layout/item_dish" />
     </com.example.core.ui.views.RecyclerStateLayout>
-</FrameLayout>
+</LinearLayout>
